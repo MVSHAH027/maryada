@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz on Maryada (Limits)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Gujarati:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans Gujarati', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .gujarati-font {
+            font-family: 'Noto Sans Gujarati', sans-serif;
+        }
+        .english-font {
+            font-family: 'Inter', sans-serif;
+        }
+        .option-btn {
+            transition: all 0.2s ease-in-out;
+        }
+        .option-btn:hover {
+            transform: scale(1.02);
+        }
+        .correct {
+            background-color: #D1FAE5 !important; /* green-200 */
+            color: #065F46; /* green-800 */
+            border-color: #6EE7B7 !important; /* green-300 */
+        }
+        .incorrect {
+            background-color: #FEE2E2 !important; /* red-200 */
+            color: #991B1B; /* red-800 */
+            border-color: #FCA5A5 !important; /* red-300 */
+        }
+        .disabled {
+            pointer-events: none;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body class="bg-slate-50">
+
+    <div class="container mx-auto max-w-2xl p-4 sm:p-6">
+        
+        <!-- Header -->
+        <header class="text-center mb-6">
+            <h1 id="main-title" class="text-3xl sm:text-4xl font-bold text-slate-800 gujarati-font">મર્યાદા ક્વિઝ</h1>
+            <p id="main-subtitle" class="text-slate-500 mt-2 english-font">Test your understanding of limits and values.</p>
+            <div class="mt-4 flex justify-center space-x-2">
+                <button id="lang-gu" class="px-4 py-2 text-sm font-semibold bg-orange-500 text-white rounded-lg shadow-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-opacity-75">ગુજરાતી</button>
+                <button id="lang-en" class="px-4 py-2 text-sm font-semibold bg-sky-500 text-white rounded-lg shadow-md hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-opacity-75">English</button>
+            </div>
+        </header>
+
+        <!-- Quiz Container -->
+        <main id="quiz-container" class="space-y-6">
+            <!-- Questions will be dynamically inserted here -->
+        </main>
+
+    </div>
+
+    <script>
+        // --- DATA ---
+        // Contains all questions, options, answers, and explanations in both languages.
+        const quizData = [
+            // Chapter Questions
+            {
+                type: 'chapter',
+                question_gu: "પાઠમાં 'ક્રિસ' નો અર્થ શું છે?",
+                question_en: "What does 'crease' (ક્રિસ) mean in the context of the chapter?",
+                options_gu: ["ક્રિકેટનું મેદાન", "મર્યાદા", "મિત્ર", "રમત"],
+                options_en: ["Cricket ground", "Limit", "Friend", "Game"],
+                answer_index: 1,
+                explanation_gu: "પાઠમાં, ક્રિકેટની 'ક્રિસ' નો ઉપયોગ જીવનમાં 'મર્યાદા' ના રૂપક તરીકે કરવામાં આવ્યો છે.",
+                explanation_en: "In the chapter, the cricket 'crease' is used as a metaphor for 'limit' in life."
+            },
+            {
+                type: 'chapter',
+                question_gu: "સંયમ મુજબ, જીવનમાં આપણી પ્રથમ ફરજ શું છે?",
+                question_en: "According to Sanyam, what is our first duty in life?",
+                options_gu: ["પ્રખ્યાત બનવું", "પૈસા કમાવવા", "આપણે જે છીએ, તે પરફેક્ટ બનવું", "ડૉક્ટર બનવું"],
+                options_en: ["To become famous", "To earn money", "To be perfect in our current roles", "To become a doctor"],
+                answer_index: 2,
+                explanation_gu: "સંયમ ભારપૂર્વક કહે છે કે કંઈક બીજું બનતા પહેલા, આપણે એક પરફેક્ટ દીકરો, ભાઈ, વિદ્યાર્થી વગેરે બનવું જોઈએ.",
+                explanation_en: "Sanyam emphasizes that before becoming something else, we must be a perfect son, brother, student, etc."
+            },
+            {
+                type: 'chapter',
+                question_gu: "વડીલો પ્રત્યેની મર્યાદાનું કયું ઉદાહરણ પાઠમાં આપવામાં આવ્યું છે?",
+                question_en: "What example of a limit towards elders is mentioned in the chapter?",
+                options_gu: ["તેમને ભેટ આપવી", "તેમની સામે ઊંચા અવાજે ન બોલવું", "તેમની સાથે ચાલવા જવું", "તેમના માટે રસોઈ બનાવવી"],
+                options_en: ["Giving them gifts", "Not speaking in a loud voice to them", "Going for a walk with them", "Cooking for them"],
+                answer_index: 1,
+                explanation_gu: "પાઠમાં સ્પષ્ટપણે ઉલ્લેખ છે કે વડીલોની મર્યાદા જાળવવા માટે તેમની સામે ક્યારેય ઊંચા અવાજે બોલવું જોઈએ નહીં.",
+                explanation_en: "The chapter clearly states that one should never speak loudly to elders to maintain respect and limits."
+            },
+            {
+                type: 'chapter',
+                question_gu: "કયો પોશાક ભારતીય સંસ્કૃતિનો આત્મા માનવામાં આવે છે?",
+                question_en: "Which attire is considered the soul of Indian culture in the chapter?",
+                options_gu: ["જીન્સ-ટીશર્ટ", "સૂટ", "સાડી", "કુર્તા-પાયજામા"],
+                options_en: ["Jeans-T-shirt", "Suit", "Saree", "Kurta-Pyjama"],
+                answer_index: 2,
+                explanation_gu: "સંયમ કહે છે કે સાડી એ ભારતીય સંસ્કૃતિનો આત્મા છે, જે સંકોચ, લાલિત્ય અને માતૃત્વ જેવા ગુણો સાથે જોડાયેલ છે.",
+                explanation_en: "Sanyam states that the Saree is the soul of Indian culture, associated with virtues like modesty, grace, and motherhood."
+            },
+            {
+                type: 'chapter',
+                question_gu: "ચુસ્ત પશ્ચિમી કપડાંથી કઈ શારીરિક સમસ્યાઓનો ઉલ્લેખ છે?",
+                question_en: "What physical problems are mentioned as a result of wearing tight western clothes?",
+                options_gu: ["વાળ ખરવા", "વજન વધવું", "બ્લડ સર્ક્યુલેશન અને હૃદયની સમસ્યાઓ", "દ્રષ્ટિ નબળી પડવી"],
+                options_en: ["Hair fall", "Weight gain", "Blood circulation and heart problems", "Weak eyesight"],
+                answer_index: 2,
+                explanation_gu: "પાઠમાં જણાવાયું છે કે જીન્સ જેવા ચુસ્ત કપડાં રક્ત પરિભ્રમણ (બ્લડ સર્ક્યુલેશન), બી.પી., અને હૃદયની સમસ્યાઓનું કારણ બની શકે છે.",
+                explanation_en: "The chapter mentions that tight clothes like jeans can cause issues with blood circulation, B.P., and the heart."
+            },
+            {
+                type: 'chapter',
+                question_gu: "'વ્યવહાર-મર્યાદા' ના ઉદાહરણ માટે કોનો ઉલ્લેખ કરવામાં આવ્યો હતો?",
+                question_en: "Who was quoted for the example of 'behavior-crease' (વ્યવહાર-મર્યાદા)?",
+                options_gu: ["મહાત્મા ગાંધી", "જવાહરલાલ નેહરુ", "સરદાર વલ્લભભાઈ પટેલ", "સુભાષચંદ્ર બોઝ"],
+                options_en: ["Mahatma Gandhi", "Jawaharlal Nehru", "Sardar Vallabhbhai Patel", "Subhash Chandra Bose"],
+                answer_index: 2,
+                explanation_gu: "સરદાર પટેલનું ઉદાહરણ આપવામાં આવ્યું છે, જેમણે કહ્યું હતું કે તેમણે ક્યારેય તેમના મોટાભાઈ અને ભાભીને તેમની હાજરીમાં વાત કરતા જોયા નથી.",
+                explanation_en: "The example of Sardar Patel was given, who said he never saw his elder brother and sister-in-law talking in his presence."
+            },
+            {
+                type: 'chapter',
+                question_gu: "પાઠ મુજબ, માણસ અને પશુ વચ્ચે મુખ્ય તફાવત શું છે?",
+                question_en: "According to the chapter, what is the main difference between humans and animals?",
+                options_gu: ["ખોરાક", "ભાષા", "લાજ-શરમ અને વિવેકની મર્યાદા", "ઘર"],
+                options_en: ["Food", "Language", "Limits of shame, modesty, and discretion", "House"],
+                answer_index: 2,
+                explanation_gu: "પાઠ સમજાવે છે કે લાજ, શરમ, મર્યાદા અને વિવેક જેવા ગુણો માણસને પશુઓથી અલગ પાડે છે.",
+                explanation_en: "The chapter explains that virtues like shame, modesty, limits, and discretion separate humans from animals."
+            },
+            {
+                type: 'chapter',
+                question_gu: "પોતાના વર્ગ કે સોસાયટીમાં રહેતી છોકરી સાથે કેવો વ્યવહાર કરવો જોઈએ?",
+                question_en: "How should one treat a girl from their class or society?",
+                options_gu: ["મિત્રની જેમ", "અજાણ્યાની જેમ", "સગી બહેન જેવી", "સ્પર્ધકની જેમ"],
+                options_en: ["Like a friend", "Like a stranger", "Like one's own sister", "Like a competitor"],
+                answer_index: 2,
+                explanation_gu: "સંયમ સલાહ આપે છે કે આવી છોકરીઓને પોતાની સગી બહેન જેવી ગણવી જોઈએ જેથી પવિત્રતા જળવાઈ રહે.",
+                explanation_en: "Sanyam advises that such girls should be considered as one's own sister to maintain purity."
+            },
+            {
+                type: 'chapter',
+                question_gu: "મર્યાદા વિના શું સંભવ નથી?",
+                question_en: "What is considered impossible without limits (મર્યાદા)?",
+                options_gu: ["પૈસા કમાવવા", "પ્રગતિ કરવી", "સ્વસ્થ, શાંત અને સુખી જીવન", "વિદેશ જવું"],
+                options_en: ["Earning money", "Making progress", "A healthy, peaceful, and happy life", "Going abroad"],
+                answer_index: 2,
+                explanation_gu: "પાઠનો સાર એ છે કે સ્વસ્થ, શાંત, નિરોગી અને સુખી જનજીવન માટે મર્યાદાઓ અનિવાર્ય છે.",
+                explanation_en: "The essence of the chapter is that limits are essential for a healthy, peaceful, and happy public life."
+            },
+            {
+                type: 'chapter',
+                question_gu: "મર્યાદાને ઓળંગવી એ શેના જેવું છે?",
+                question_en: "What is crossing a limit compared to?",
+                options_gu: ["એક સિદ્ધિ", "એક પ્રકારનું મૃત્યુ", "એક રમત", "એક મજાક"],
+                options_en: ["An achievement", "A type of death", "A game", "A joke"],
+                answer_index: 1,
+                explanation_gu: "સંયમ કહે છે કે આપણી મર્યાદાને ઓળંગવી એ એક પ્રકારનું મૃત્યુ છે, કારણ કે આપણે જે હોવા જોઈએ તે રહેતા નથી.",
+                explanation_en: "Sanyam says that crossing our limit is a type of death because we cease to be what we are supposed to be."
+            },
+            {
+                type: 'chapter',
+                question_gu: "વ્યવહાર-મર્યાદા ઓળંગનારા લોકો સમાજને કયો સંદેશ આપે છે?",
+                question_en: "What message do people who cross the 'behavior-crease' give to society?",
+                options_gu: ["'અમે પ્રગતિશીલ છીએ'", "'તમે પણ અમારી જેવા નફ્ફટ બનો'", "'જીવનનો આનંદ માણો'", "'અમે સુખી છીએ'"],
+                options_en: ["'We are progressive'", "'You should also become shameless like us'", "'Enjoy life'", "'We are happy'"],
+                answer_index: 1,
+                explanation_gu: "પાઠ મુજબ, તેઓ અજાણતાં જ બીજાને પણ લાજ-શરમ છોડી દેવા માટે પ્રોત્સાહિત કરે છે, જે સામાજિક સ્વાસ્થ્ય માટે હાનિકારક છે.",
+                explanation_en: "According to the chapter, they unknowingly encourage others to abandon shame and modesty, which is harmful to social health."
+            },
+            {
+                type: 'chapter',
+                question_gu: "પવિત્રતા જાળવવા માટે સંયમ શું ટાળવાનું સૂચન કરે છે?",
+                question_en: "What does Sanyam suggest avoiding to maintain purity?",
+                options_gu: ["ખરાબ ખોરાક", "વિજાતીય વ્યક્તિઓનો બિનજરૂરી સંપર્ક", "મોડી રાત્રે જાગવું", "વધુ પડતી ફિલ્મો જોવી"],
+                options_en: ["Bad food", "Unnecessary contact with the opposite sex", "Staying up late", "Watching too many movies"],
+                answer_index: 1,
+                explanation_gu: "પવિત્રતા અને મર્યાદા જાળવવા માટે, સંયમ જોવા, વાત કરવા કે અન્ય કોઈ કારણસર વિજાતીય વ્યક્તિનો સંપર્ક ટાળવાની સલાહ આપે છે.",
+                explanation_en: "To maintain purity and limits, Sanyam advises avoiding contact with the opposite sex, whether by sight, speech, or any other reason."
+            },
+            {
+                type: 'chapter',
+                question_gu: "ક્રિકેટમાં બેટ્સમેન ક્રિસની બહાર નીકળે તો શું થાય છે?",
+                question_en: "What happens when a batsman leaves the crease in cricket?",
+                options_gu: ["તેને રન મળે છે", "તે આઉટ થઈ જાય છે", "તે જીતી જાય છે", "અમ્પાયર તેને ચેતવણી આપે છે"],
+                options_en: ["He gets a run", "He gets out", "He wins", "The umpire warns him"],
+                answer_index: 1,
+                explanation_gu: "આ ઉદાહરણનો ઉપયોગ એ સમજાવવા માટે થાય છે કે જેમ ક્રિકેટમાં મર્યાદા ઓળંગવાથી બેટ્સમેન આઉટ થાય છે, તેમ જીવનમાં પણ થાય છે.",
+                explanation_en: "This example is used to explain that just as a batsman gets out for crossing the limit in cricket, the same happens in life."
+            },
+            {
+                type: 'chapter',
+                question_gu: "જે લોકો મર્યાદા છોડી રહ્યા છે, તેઓ કઈ દિશામાં પ્રગતિ કરી રહ્યા છે?",
+                question_en: "People who are abandoning limits are progressing in which direction?",
+                options_gu: ["સુખ તરફ", "સમૃદ્ધિ તરફ", "દુઃખ તરફ", "જ્ઞાન તરફ"],
+                options_en: ["Towards happiness", "Towards prosperity", "Towards sorrow", "Towards knowledge"],
+                answer_index: 2,
+                explanation_gu: "સંયમ દલીલ કરે છે કે મર્યાદા છોડવી એ પ્રગતિ નથી, પરંતુ વાસ્તવમાં દુઃખી થવાની દિશામાં આગળ વધવું છે.",
+                explanation_en: "Sanyam argues that abandoning limits is not progress, but actually moving in the direction of becoming unhappy."
+            },
+            {
+                type: 'chapter',
+                question_gu: "પોતાનાથી મોટી ઉંમરની સ્ત્રીને કેવી માનવી જોઈએ?",
+                question_en: "How should one consider a woman older than oneself?",
+                options_gu: ["મિત્ર જેવી", "બહેન જેવી", "માતા જેવી", "અજાણી વ્યક્તિ જેવી"],
+                options_en: ["Like a friend", "Like a sister", "Like a mother", "Like a stranger"],
+                answer_index: 2,
+                explanation_gu: "પાઠ શીખવે છે કે પોતાનાથી મોટી ઉંમરની સ્ત્રીને માતા જેવું સન્માન આપવું જોઈએ.",
+                explanation_en: "The chapter teaches that a woman older than oneself should be respected like a mother."
+            },
+            // Scenario Questions
+            {
+                type: 'scenario',
+                question_gu: "તમારા મિત્ર તેના માતા-પિતા સાથે ખૂબ ઊંચા અવાજે વાત કરે છે. તમારે શું કરવું જોઈએ?",
+                question_en: "Your friend speaks very loudly and disrespectfully to their parents. What should you do?",
+                options_gu: ["તેને પ્રોત્સાહિત કરવો", "તેની અવગણના કરવી", "તેને શાંતિથી સમજાવવું કે તે ખોટું છે", "તેના માતા-પિતાને ફરિયાદ કરવી"],
+                options_en: ["Encourage them", "Ignore them", "Calmly explain to them that it's wrong", "Complain to their parents"],
+                answer_index: 2,
+                explanation_gu: "વડીલો પ્રત્યેની મર્યાદા જાળવવી મહત્વપૂર્ણ છે. મિત્રને પ્રેમથી સમજાવવું એ સાચો અભિગમ છે.",
+                explanation_en: "Maintaining limits with elders is important. Explaining this lovingly to a friend is the right approach."
+            },
+            {
+                type: 'scenario',
+                question_gu: "તમારા માતા-પિતાએ તમને રાત્રે મોડા સુધી બહાર રહેવાની ના પાડી છે, પણ તમારા મિત્રો પાર્ટી માટે દબાણ કરી રહ્યા છે. તમારે શું કરવું?",
+                question_en: "Your parents have set a curfew, but your friends are pressuring you to stay out late for a party. What should you do?",
+                options_gu: ["ચૂપચાપ પાર્ટીમાં જવું", "માતા-પિતા સાથે દલીલ કરવી", "માતા-પિતાની મર્યાદાનું સન્માન કરવું", "મિત્રો સાથે સંબંધ તોડી નાખવો"],
+                options_en: ["Go to the party secretly", "Argue with your parents", "Respect your parents' limit", "Break ties with your friends"],
+                answer_index: 2,
+                explanation_gu: "માતા-પિતા દ્વારા નક્કી કરેલી મર્યાદાઓ આપણી સુરક્ષા અને ભલા માટે હોય છે. તેમનું સન્માન કરવું એ આપણી ફરજ છે.",
+                explanation_en: "Limits set by parents are for our safety and well-being. Respecting them is our duty."
+            },
+            {
+                type: 'scenario',
+                question_gu: "કોઈ વ્યક્તિ ગ્રુપ ચેટમાં સ્ત્રીઓ વિશે અયોગ્ય મજાક કરે છે. તમારો પ્રતિભાવ શું હોવો જોઈએ?",
+                question_en: "Someone makes an inappropriate joke about women in a group chat. What should be your response?",
+                options_gu: ["મજાક પર હસવું", "કહેવું કે આ મજાક યોગ્ય નથી", "ચેટને અવગણવી", "ગ્રુપમાં વધુ મજાક મોકલવી"],
+                options_en: ["Laugh at the joke", "State that the joke is not appropriate", "Ignore the chat", "Send more jokes to the group"],
+                answer_index: 1,
+                explanation_gu: "સ્ત્રીઓનું સન્માન કરવું એ એક મહત્વપૂર્ણ વ્યવહાર-મર્યાદા છે. ખોટી વાતનો વિરોધ કરવો એ નૈતિક રીતે સાચું છે.",
+                explanation_en: "Respecting women is an important behavioral limit. It is morally right to oppose something that is wrong."
+            },
+            {
+                type: 'scenario',
+                question_gu: "તમે જાહેર સ્થળે એક યુગલને અશોભનીય વર્તન કરતા જુઓ છો. તમારે શું કરવું જોઈએ?",
+                question_en: "You see a couple behaving indecently in a public place. What should you do?",
+                options_gu: ["તેમનો વિડિઓ બનાવવો", "તેમને જાહેરમાં ઠપકો આપવો", "પોલીસને બોલાવવી", "તેમને અવગણીને દૂર જવું"],
+                options_en: ["Make a video of them", "Scold them publicly", "Call the police", "Ignore them and move away"],
+                answer_index: 3,
+                explanation_gu: "જાહેરમાં શોભનીયતાની મર્યાદા જાળવવી જોઈએ. જોકે, સીધો સંઘર્ષ ટાળવો અને પોતાની જાતને તે પરિસ્થિતિમાંથી દૂર કરવી સલામત છે.",
+                explanation_en: "The limit of public decency should be maintained. However, avoiding direct confrontation and removing yourself from the situation is the safest choice."
+            },
+            {
+                type: 'scenario',
+                question_gu: "તમને એક એવી નોકરીની ઓફર મળે છે જેમાં ગ્રાહકોને છેતરવા પડે છે. તમારે શું વિચારવું જોઈએ?",
+                question_en: "You are offered a job that requires you to deceive clients. What should you consider?",
+                options_gu: ["પગાર કેટલો છે", "પ્રામાણિકતા અને નૈતિકતાની મર્યાદા", "પ્રમોશનની તકો", "કંપની કેટલી મોટી છે"],
+                options_en: ["How high the salary is", "The limit of honesty and ethics", "Promotion opportunities", "How big the company is"],
+                answer_index: 1,
+                explanation_gu: "વ્યાવસાયિક જીવનમાં પણ નૈતિકતા અને પ્રામાણિકતાની મર્યાદા હોય છે. તેને ઓળંગવાથી લાંબા ગાળે નુકસાન થાય છે.",
+                explanation_en: "Even in professional life, there are limits of ethics and honesty. Crossing them leads to harm in the long run."
+            },
+            {
+                type: 'scenario',
+                question_gu: "તમારા મિત્ર સોશિયલ મીડિયા પર 'ફેમસ' ન હોવાને કારણે ઉદાસ છે. તમે તેને પાઠમાંથી કઈ સલાહ આપી શકો?",
+                question_en: "Your friend is sad because they are not 'famous' on social media. What advice from the chapter could you share?",
+                options_gu: ["વધુ ફોલોઅર્સ ખરીદવા", "વધુ સારા ફોટા પોસ્ટ કરવા", "પહેલા એક સારા વ્યક્તિ અને મિત્ર બનવા પર ધ્યાન કેન્દ્રિત કરવું", "સોશિયલ મીડિયા છોડી દેવું"],
+                options_en: ["To buy more followers", "To post better photos", "To focus on being a good person and friend first", "To quit social media"],
+                answer_index: 2,
+                explanation_gu: "પાઠ શીખવે છે કે આપણી પ્રથમ ફરજ પ્રખ્યાત બનવાની નથી, પરંતુ આપણી ભૂમિકાઓમાં પરફેક્ટ બનવાની છે.",
+                explanation_en: "The chapter teaches that our first duty is not to be famous, but to be perfect in our roles."
+            },
+            {
+                type: 'scenario',
+                question_gu: "એક ચર્ચા દરમિયાન, સામેની વ્યક્તિ બૂમો પાડવાનું શરૂ કરે છે. મર્યાદા જાળવવા માટે શ્રેષ્ઠ પ્રતિભાવ કયો છે?",
+                question_en: "During a debate, the other person starts shouting. What is the best response to maintain decorum?",
+                options_gu: ["તેનાથી પણ ઊંચા અવાજે બૂમો પાડવી", "ચર્ચા છોડીને ચાલ્યા જવું", "શાંત રહીને તાર્કિક જવાબ આપવો", "તેની મજાક ઉડાવવી"],
+                options_en: ["Shout even louder than them", "Leave the debate and walk away", "Remain calm and respond logically", "Make fun of them"],
+                answer_index: 2,
+                explanation_gu: "વાતચીતમાં મર્યાદા જાળવવી એ સભ્યતાની નિશાની છે. ગુસ્સાનો જવાબ શાંતિ અને તર્કથી આપવો જોઈએ.",
+                explanation_en: "Maintaining limits in conversation is a sign of civility. Anger should be met with calmness and logic."
+            },
+            {
+                type: 'scenario',
+                question_gu: "તમે ખરીદી કરવા ગયા છો અને તમને એક પારંપરિક અને એક પશ્ચિમી પોશાક ગમે છે. પાઠના સંદેશને ધ્યાનમાં રાખીને 'સંસ્કારી' પસંદગી કઈ હશે?",
+                question_en: "You are shopping and you like both a traditional and a western outfit. Keeping the chapter's message in mind, what would be the 'sanskari' choice?",
+                options_gu: ["પશ્ચિમી પોશાક", "પારંપરિક પોશાક", "બંને ખરીદી લેવા", "કંઈ ન ખરીદવું"],
+                options_en: ["The western outfit", "The traditional outfit", "Buy both", "Buy nothing"],
+                answer_index: 1,
+                explanation_gu: "પાઠ પારંપરિક પોશાકને સંસ્કૃતિ અને મર્યાદા સાથે જોડે છે, તેથી તે 'સંસ્કારી' પસંદગી ગણાશે.",
+                explanation_en: "The chapter associates traditional attire with culture and limits, making it the 'sanskari' choice."
+            },
+            {
+                type: 'scenario',
+                question_gu: "તમારા નાના ભાઈ-બહેન તમને પૂછ્યા વગર તમારી વસ્તુઓ વાપરે છે. મર્યાદા શીખવવા માટે શ્રેષ્ઠ રસ્તો કયો છે?",
+                question_en: "Your younger sibling uses your things without asking. What is the best way to teach them about boundaries?",
+                options_gu: ["તેમની વસ્તુઓ પણ છુપાવી દેવી", "તેમના પર ગુસ્સો કરવો", "શાંતિથી સમજાવવું કે પૂછવું જરૂરી છે", "માતા-પિતાને ફરિયાદ કરવી"],
+                options_en: ["Hide their things too", "Get angry at them", "Calmly explain that they need to ask first", "Complain to your parents"],
+                answer_index: 2,
+                explanation_gu: "બીજાની વસ્તુઓ વાપરતા પહેલા પરવાનગી લેવી એ પણ એક મર્યાદા છે. ગુસ્સો કરવાને બદલે પ્રેમથી સમજાવવું વધુ અસરકારક છે.",
+                explanation_en: "Asking for permission before using others' belongings is also a limit. Explaining this calmly is more effective than getting angry."
+            },
+            {
+                type: 'scenario',
+                question_gu: "તમે કોઈ મિત્રના ઘરે જમવા ગયા છો અને તમને ભોજન પસંદ નથી આવ્યું. તમારે શું કરવું જોઈએ?",
+                question_en: "You are at a friend's house for dinner and you don't like the food. What should you do?",
+                options_gu: ["ભોજનની ટીકા કરવી", "ખાવાનો ઇનકાર કરવો", "ચૂપચાપ થોડું ખાઈ લેવું અને યજમાનનો આભાર માનવો", "બહાનું કાઢીને જમવાનું ટાળવું"],
+                options_en: ["Criticize the food", "Refuse to eat", "Quietly eat a little and thank the host", "Make an excuse to avoid eating"],
+                answer_index: 2,
+                explanation_gu: "યજમાનની મહેનત અને લાગણીઓનું સન્માન કરવું એ વ્યવહાર-મર્યાદા છે. ટીકા કરવાથી તેમના મનને ઠેસ પહોંચી શકે છે.",
+                explanation_en: "Respecting the host's effort and feelings is a behavioral limit. Criticism can hurt their feelings."
+            }
+        ];
+
+        // --- STATE ---
+        let currentLanguage = 'gu';
+        let shuffledQuestions = [];
+
+        // --- DOM ELEMENTS ---
+        const quizContainer = document.getElementById('quiz-container');
+        const langGuBtn = document.getElementById('lang-gu');
+        const langEnBtn = document.getElementById('lang-en');
+        const mainTitle = document.getElementById('main-title');
+        const mainSubtitle = document.getElementById('main-subtitle');
+
+        // --- FUNCTIONS ---
+
+        /**
+         * Shuffles an array in place.
+         * @param {Array} array The array to shuffle.
+         */
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        /**
+         * Renders the entire quiz based on the current language.
+         */
+        function renderQuiz() {
+            // Update header text
+            if (currentLanguage === 'gu') {
+                mainTitle.textContent = 'મર્યાદા ક્વિઝ';
+                mainSubtitle.textContent = 'તમારી મર્યાદા અને મૂલ્યોની સમજને ચકાસો.';
+                mainTitle.classList.add('gujarati-font');
+                mainSubtitle.classList.add('gujarati-font');
+                mainSubtitle.classList.remove('english-font');
+                langGuBtn.classList.add('ring-2', 'ring-offset-2', 'ring-orange-500');
+                langEnBtn.classList.remove('ring-2', 'ring-offset-2', 'ring-sky-500');
+            } else {
+                mainTitle.textContent = 'Quiz on Limits';
+                mainSubtitle.textContent = 'Test your understanding of limits and values.';
+                mainTitle.classList.remove('gujarati-font');
+                mainSubtitle.classList.remove('gujarati-font');
+                mainSubtitle.classList.add('english-font');
+                langEnBtn.classList.add('ring-2', 'ring-offset-2', 'ring-sky-500');
+                langGuBtn.classList.remove('ring-2', 'ring-offset-2', 'ring-orange-500');
+            }
+            
+            // Clear previous questions
+            quizContainer.innerHTML = '';
+
+            // Render each question
+            shuffledQuestions.forEach((q, index) => {
+                const questionText = q[`question_${currentLanguage}`];
+                const options = q[`options_${currentLanguage}`];
+
+                const questionElement = document.createElement('div');
+                questionElement.className = 'bg-white p-5 rounded-xl shadow-sm border border-slate-200';
+                
+                const questionTitle = document.createElement('h3');
+                questionTitle.className = `text-lg font-semibold text-slate-800 mb-4 ${currentLanguage === 'gu' ? 'gujarati-font' : 'english-font'}`;
+                questionTitle.textContent = `${index + 1}. ${questionText}`;
+
+                const optionsContainer = document.createElement('div');
+                optionsContainer.className = 'space-y-3';
+                optionsContainer.id = `q-options-${index}`;
+
+                options.forEach((option, optionIndex) => {
+                    const optionBtn = document.createElement('button');
+                    optionBtn.className = `w-full text-left p-3 rounded-lg border-2 border-slate-300 bg-slate-100 hover:bg-slate-200 hover:border-sky-400 option-btn ${currentLanguage === 'gu' ? 'gujarati-font' : 'english-font'}`;
+                    optionBtn.textContent = option;
+                    optionBtn.onclick = () => checkAnswer(index, optionIndex);
+                    optionsContainer.appendChild(optionBtn);
+                });
+
+                const explanationElement = document.createElement('div');
+                explanationElement.id = `explanation-${index}`;
+                explanationElement.className = 'hidden mt-4 p-3 rounded-lg text-sm';
+
+                questionElement.appendChild(questionTitle);
+                questionElement.appendChild(optionsContainer);
+                questionElement.appendChild(explanationElement);
+                quizContainer.appendChild(questionElement);
+            });
+        }
+
+        /**
+         * Checks the selected answer, provides feedback, and shows the explanation.
+         * @param {number} questionIndex The index of the question in the shuffled array.
+         * @param {number} selectedOptionIndex The index of the selected option.
+         */
+        function checkAnswer(questionIndex, selectedOptionIndex) {
+            const question = shuffledQuestions[questionIndex];
+            const optionsContainer = document.getElementById(`q-options-${questionIndex}`);
+            const explanationElement = document.getElementById(`explanation-${questionIndex}`);
+            const selectedBtn = optionsContainer.children[selectedOptionIndex];
+            const correctBtn = optionsContainer.children[question.answer_index];
+
+            // Disable all buttons for this question
+            optionsContainer.classList.add('disabled');
+
+            // Check if answer is correct
+            if (selectedOptionIndex === question.answer_index) {
+                selectedBtn.classList.add('correct');
+                explanationElement.classList.add('bg-green-100', 'text-green-800');
+            } else {
+                selectedBtn.classList.add('incorrect');
+                correctBtn.classList.add('correct');
+                explanationElement.classList.add('bg-red-100', 'text-red-800');
+            }
+
+            // Show explanation
+            explanationElement.textContent = question[`explanation_${currentLanguage}`];
+            explanationElement.classList.remove('hidden');
+        }
+
+        /**
+         * Sets the language and re-renders the quiz.
+         * @param {string} lang The language code ('gu' or 'en').
+         */
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            // Re-shuffle and re-render to reset the quiz on language change
+            initializeQuiz();
+        }
+
+        /**
+         * Initializes the quiz by shuffling questions and rendering them.
+         */
+        function initializeQuiz() {
+            shuffledQuestions = [...quizData];
+            shuffleArray(shuffledQuestions);
+            renderQuiz();
+        }
+
+        // --- EVENT LISTENERS ---
+        langGuBtn.addEventListener('click', () => setLanguage('gu'));
+        langEnBtn.addEventListener('click', () => setLanguage('en'));
+
+        // --- INITIALIZATION ---
+        window.onload = initializeQuiz;
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-key="page_title">મર્યાદા: જીવનની સાચી સીમા</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Vadodara:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base font settings */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+            color: #1e293b; /* slate-800 */
+        }
+        /* Gujarati font class */
+        .gujarati-font {
+            font-family: 'Hind Vadodara', sans-serif;
+        }
+        /* Card styling */
+        .content-card {
+            background-color: white;
+            border-radius: 1.5rem; /* 24px */
+            padding: 2rem; /* 32px */
+            margin-bottom: 2rem; /* 32px */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2e8f0; /* slate-200 */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+        /* Language button styling */
+        .lang-btn {
+            padding: 0.5rem 1.25rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            font-size: 0.875rem;
+        }
+        .lang-btn.active {
+            background-color: #0ea5e9; /* sky-500 */
+            color: white;
+            box-shadow: 0 4px 14px 0 rgba(14, 165, 233, 0.39);
+        }
+        .lang-btn:not(.active) {
+            background-color: #ffffff;
+            color: #334155; /* slate-700 */
+            border-color: #e2e8f0; /* slate-200 */
+        }
+        /* Link button styling */
+        .link-btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+            background-color: #14b8a6; /* teal-500 */
+            color: white;
+            text-decoration: none;
+        }
+        .link-btn:hover {
+            background-color: #0d9488; /* teal-600 */
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(20, 184, 166, 0.3);
+        }
+        /* Header styling */
+        .header-title {
+            font-size: 2.25rem; /* 36px */
+            font-weight: 700;
+            line-height: 1.2;
+            color: #0c4a6e; /* sky-800 */
+        }
+        .header-subtitle {
+            font-size: 1.125rem; /* 18px */
+            color: #475569; /* slate-600 */
+            margin-top: 0.5rem;
+        }
+        /* Section title styling */
+        .section-title {
+            font-size: 1.5rem; /* 24px */
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #1e3a8a; /* indigo-800 */
+        }
+        .section-description {
+            font-size: 1rem; /* 16px */
+            line-height: 1.75;
+            color: #334155; /* slate-700 */
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Language Switcher -->
+    <div class="sticky top-0 z-10 bg-white/80 backdrop-blur-sm py-3 shadow-sm">
+        <div class="container mx-auto px-4 flex justify-center items-center space-x-3">
+            <button id="btn-gu" class="lang-btn gujarati-font">ગુજરાતી</button>
+            <button id="btn-en" class="lang-btn">English</button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto p-4 md:p-8 max-w-3xl">
+
+        <!-- Header Section -->
+        <header class="text-center my-8 md:my-12">
+            <h1 class="header-title" data-key="header_title">મર્યાદા: જીવનની સાચી સીમા</h1>
+            <p class="header-subtitle" data-key="header_subtitle">જેમ ક્રિકેટમાં ક્રિસની બહાર નીકળવાથી 'આઉટ' થવાય છે, તેમ જીવનમાં મર્યાદા ઓળંગવાથી વ્યક્તિ જીવનમાંથી 'આઉટ' થઈ જાય છે.</p>
+        </header>
+
+        <!-- Listen & Watch Section -->
+        <section class="content-card">
+            <h2 class="section-title" data-key="media_title">સાંભળો અને જુઓ: મર્યાદાને સમજો</h2>
+            <p class="section-description" data-key="media_desc">આ પોડકાસ્ટ સાંભળીને અને ફિલ્મ જોઈને જીવનમાં મર્યાદાના મહત્વ અને તેના પાલનથી થતા ફાયદાઓ વિશે ઊંડાણપૂર્વક જાણો.</p>
+            
+            <!-- Gujarati Podcast -->
+            <div class="mb-6">
+                <h3 class="font-bold text-lg mb-2 gujarati-font" data-key="podcast_gu_title">પોડકાસ્ટ: મર્યાદા : જીવનની સાચી સીમા</h3>
+                <a href="https://youtu.be/D6GyD89e_9I" target="_blank" class="link-btn" data-key="listen_btn">સાંભળો</a>
+            </div>
+
+            <!-- Hindi Film -->
+            <div>
+                <h3 class="font-bold text-lg mb-2" data-key="film_hi_title">ફિલ્મ: મર્યાદા, એ જીવનની સીમા રેખા છે</h3>
+                <a href="https://youtu.be/mAogZQtIjqo" target="_blank" class="link-btn" data-key="watch_btn">જુઓ</a>
+            </div>
+        </section>
+
+        <!-- Infographics Section -->
+        <section class="content-card">
+            <h2 class="section-title" data-key="infographics_title">ઇન્ફોગ્રાફિક્સ: એક દ્રશ્ય રજૂઆત</h2>
+            <p class="section-description" data-key="infographics_desc">મર્યાદાના સિદ્ધાંતને સરળ અને આકર્ષક દ્રશ્ય સ્વરૂપમાં સમજવા માટે આ ઇન્ફોગ્રાફિક્સ જુઓ. તે જટિલ વિચારોને સરળતાથી રજૂ કરે છે.</p>
+            <a href="infographics.html" target="_blank" class="link-btn" data-key="view_btn">જુઓ</a>
+        </section>
+
+        <!-- Quiz Section -->
+        <section class="content-card">
+            <h2 class="section-title" data-key="quiz_title">ક્વિઝ: જ્ઞાનને વ્યવહારમાં મૂકો</h2>
+            <p class="section-description" data-key="quiz_desc">તમે જે શીખ્યા છો તેની ચકાસણી કરો. આ ક્વિઝ તમને મર્યાદાના જ્ઞાનને વાસ્તવિક જીવનની પરિસ્થિતિઓમાં કેવી રીતે લાગુ કરવું તે સમજવામાં મદદ કરશે.</p>
+            <a href="quiz.html" target="_blank" class="link-btn" data-key="start_quiz_btn">ક્વિઝ શરૂ કરો</a>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center mt-12 mb-6">
+            <p class="font-semibold text-lg text-slate-700 gujarati-font">મનીષ વી. શાહ</p>
+            <p class="text-slate-500 mt-1">વોટ્સએપ: 94299 26447 (વડોદરા)</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // --- CONTENT DATA ---
+        const content = {
+            'en': {
+                'page_title': "Maryada: The True Limit of Life",
+                'header_title': "Maryada: The True Limit of Life",
+                'header_subtitle': "Just as stepping out of the crease in cricket means 'out', crossing the limit in life means getting 'out' of life itself.",
+                'media_title': "Listen & Watch: Understand the Limits",
+                'media_desc': "Listen to the podcast and watch the film to gain a deep understanding of the importance of limits (Maryada) in life and the benefits of adhering to them.",
+                'podcast_gu_title': "Podcast: Maryada : The True Boundary of Life",
+                'listen_btn': "Listen",
+                'film_hi_title': "Film: Maryada, It's the Boundary Line of Life",
+                'watch_btn': "Watch",
+                'infographics_title': "Infographics: A Visual Presentation",
+                'infographics_desc': "View these infographics to understand the principle of 'Maryada' in a simple and engaging visual format. It simplifies complex ideas.",
+                'view_btn': "View",
+                'quiz_title': "Quiz: Apply Knowledge into Practice",
+                'quiz_desc': "Test what you have learned. This quiz will help you understand how to apply the knowledge of limits to real-life situations.",
+                'start_quiz_btn': "Start Quiz"
+            },
+            'gu': {
+                'page_title': "મર્યાદા: જીવનની સાચી સીમા",
+                'header_title': "મર્યાદા: જીવનની સાચી સીમા",
+                'header_subtitle': "જેમ ક્રિકેટમાં ક્રિસની બહાર નીકળવાથી 'આઉટ' થવાય છે, તેમ જીવનમાં મર્યાદા ઓળંગવાથી વ્યક્તિ જીવનમાંથી 'આઉટ' થઈ જાય છે.",
+                'media_title': "સાંભળો અને જુઓ: મર્યાદાને સમજો",
+                'media_desc': "આ પોડકાસ્ટ સાંભળીને અને ફિલ્મ જોઈને જીવનમાં મર્યાદાના મહત્વ અને તેના પાલનથી થતા ફાયદાઓ વિશે ઊંડાણપૂર્વક જાણો.",
+                'podcast_gu_title': "પોડકાસ્ટ: મર્યાદા : જીવનની સાચી સીમા",
+                'listen_btn': "સાંભળો",
+                'film_hi_title': "ફિલ્મ: મર્યાદા, એ જીવનની સીમા રેખા છે",
+                'watch_btn': "જુઓ",
+                'infographics_title': "ઇન્ફોગ્રાફિક્સ: એક દ્રશ્ય રજૂઆત",
+                'infographics_desc': "મર્યાદાના સિદ્ધાંતને સરળ અને આકર્ષક દ્રશ્ય સ્વરૂપમાં સમજવા માટે આ ઇન્ફોગ્રાફિક્સ જુઓ. તે જટિલ વિચારોને સરળતાથી રજૂ કરે છે.",
+                'view_btn': "જુઓ",
+                'quiz_title': "ક્વિઝ: જ્ઞાનને વ્યવહારમાં મૂકો",
+                'quiz_desc': "તમે જે શીખ્યા છો તેની ચકાસણી કરો. આ ક્વિઝ તમને મર્યાદાના જ્ઞાનને વાસ્તવિક જીવનની પરિસ્થિતિઓમાં કેવી રીતે લાગુ કરવું તે સમજવામાં મદદ કરશે.",
+                'start_quiz_btn': "ક્વિઝ શરૂ કરો"
+            }
+        };
+
+        // --- LANGUAGE SWITCHER LOGIC ---
+        const btnEn = document.getElementById('btn-en');
+        const btnGu = document.getElementById('btn-gu');
+        const elementsToTranslate = document.querySelectorAll('[data-key]');
+        const body = document.body;
+        const html = document.documentElement;
+
+        function setLanguage(lang) {
+            // Update text content for all elements with a data-key
+            elementsToTranslate.forEach(elem => {
+                const key = elem.getAttribute('data-key');
+                if (content[lang][key]) {
+                    elem.innerHTML = content[lang][key];
+                }
+            });
+
+            // Update button styles and body/html font classes
+            if (lang === 'gu') {
+                btnGu.classList.add('active');
+                btnEn.classList.remove('active');
+                body.classList.add('gujarati-font');
+                html.setAttribute('lang', 'gu');
+            } else {
+                btnEn.classList.add('active');
+                btnGu.classList.remove('active');
+                body.classList.remove('gujarati-font');
+                html.setAttribute('lang', 'en');
+            }
+        }
+
+        btnEn.addEventListener('click', () => setLanguage('en'));
+        btnGu.addEventListener('click', () => setLanguage('gu'));
+
+        // Set initial language on page load
+        setLanguage('gu'); // Default to Gujarati
+
+    </script>
+
+</body>
+</html>

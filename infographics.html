@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Importance of Limits (Maryada)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Vadodara:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for the infographic */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+            color: #1e293b;
+        }
+        .gujarati-font {
+            font-family: 'Hind Vadodara', sans-serif;
+        }
+        .card {
+            background-color: white;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .card-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: #e0f2fe;
+        }
+        .card-icon svg {
+            width: 40px;
+            height: 40px;
+            color: #0c4a6e;
+        }
+        .lang-btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        .lang-btn.active {
+            background-color: #0284c7;
+            color: white;
+            box-shadow: 0 4px 14px 0 rgba(2, 132, 199, 0.39);
+        }
+        .lang-btn:not(.active) {
+            background-color: #ffffff;
+            color: #334155;
+            border-color: #e2e8f0;
+        }
+        .section-title {
+            font-size: 1.875rem; /* 30px */
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+        .section-subtitle {
+            font-size: 1.125rem; /* 18px */
+            color: #64748b;
+            margin-bottom: 1rem;
+        }
+        .section-text {
+            font-size: 1rem; /* 16px */
+            line-height: 1.75;
+            color: #334155;
+        }
+        .footer-text {
+             font-family: 'Hind Vadodara', sans-serif;
+             font-size: 1rem;
+             color: #475569;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Language Switcher -->
+    <div class="sticky top-0 z-10 bg-white/80 backdrop-blur-sm py-4 shadow-sm">
+        <div class="container mx-auto px-4 flex justify-center items-center space-x-4">
+            <button id="btn-en" class="lang-btn active">English</button>
+            <button id="btn-gu" class="lang-btn gujarati-font">ગુજરાતી</button>
+        </div>
+    </div>
+
+    <!-- Main Infographic Content -->
+    <div class="container mx-auto p-4 md:p-8 max-w-3xl">
+
+        <!-- Header Section -->
+        <header class="text-center my-8 md:my-12">
+            <h1 class="section-title text-sky-800" data-key="header_title">The Concept of Limits</h1>
+            <p class="section-subtitle" data-key="header_subtitle">Just like in cricket, life has a 'crease'. Stepping out recklessly leads to getting 'out'.</p>
+        </header>
+
+        <!-- Card 1: The Analogy -->
+        <section class="card">
+            <div class="card-icon" style="background-color: #dcfce7;">
+                <svg style="color: #166534;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 18.375a6.375 6.375 0 0 0 6.375-6.375V12m0 6.375a6.375 6.375 0 0 1-6.375-6.375V12m6.375 6.375V12m-6.375 6.375H6.375a6.375 6.375 0 0 1-6.375-6.375V12m18.75 0a6.375 6.375 0 0 0-6.375-6.375H6.375A6.375 6.375 0 0 0 0 12m18.75 0h-7.5" />
+                </svg>
+            </div>
+            <h2 class="section-title text-center" data-key="analogy_title">Life's Crease: The Limit</h2>
+            <p class="section-text text-center" data-key="analogy_text">In cricket, a batsman is out if they leave the crease. Similarly, in life, a person who crosses their limits faces negative consequences. This 'crease' is our 'Maryada' - our boundary of respectful and appropriate conduct.</p>
+        </section>
+
+        <!-- Card 2: Respect for Elders -->
+        <section class="card">
+            <div class="card-icon" style="background-color: #ffedd5;">
+                 <svg style="color: #9a3412;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m-7.5-2.962a3.75 3.75 0 1 0-7.5 0 3.75 3.75 0 0 0 7.5 0ZM10.5 1.5a9 9 0 1 0 0 18 9 9 0 0 0 0-18Z" />
+                </svg>
+            </div>
+            <h2 class="section-title text-center" data-key="elders_title">Limit Towards Elders</h2>
+            <p class="section-text text-center" data-key="elders_text">A fundamental limit is showing respect to our elders. We should never speak to them in a loud or disrespectful voice. Crossing this limit not only brings immediate negative results but also affects our future happiness. What we do to our parents, our children may do to us.</p>
+        </section>
+
+        <!-- Card 3: The Dress Limit -->
+        <section class="card">
+            <div class="card-icon" style="background-color: #e0e7ff;">
+                <svg style="color: #3730a3;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                </svg>
+            </div>
+            <h2 class="section-title text-center" data-key="dress_title">The Dress Limit (Dress-Crease)</h2>
+            <p class="section-text text-center" data-key="dress_text">Our traditional attire, like the Saree, embodies dignity, grace, and modesty. It represents our culture's soul. Adopting western dress without thought can disturb our inner balance and family life. Tight clothing can also cause physical health problems by affecting blood circulation and hormones.</p>
+        </section>
+
+        <!-- Card 4: The Behavior Limit -->
+        <section class="card">
+            <div class="card-icon" style="background-color: #fce7f3;">
+                <svg style="color: #9d174d;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.182 15.182a4.5 4.5 0 0 1-6.364 0M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75s.168-.75.375-.75.375.336.375.75Zm4.5 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75Z" />
+                </svg>
+            </div>
+            <h2 class="section-title text-center" data-key="behavior_title">The Behavior Limit (Vyavahar-Maryada)</h2>
+            <p class="section-text text-center" data-key="behavior_text">Maintaining dignity and purity in public interactions is crucial. Shameless public behavior blurs the line between humans and animals. We must treat peers with respect, like siblings, and elders like parents, avoiding unnecessary contact to maintain this sanctity. Crossing this limit leads to societal decay.</p>
+        </section>
+
+        <!-- Conclusion Card -->
+        <section class="card bg-sky-700 text-white">
+             <div class="card-icon bg-white/20">
+                <svg class="text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                </svg>
+            </div>
+            <h2 class="section-title text-center" data-key="conclusion_title">Progress with Limits</h2>
+            <p class="section-text text-center text-sky-100" data-key="conclusion_text">True progress is not in abandoning limits, but in upholding them. A healthy, peaceful, and happy life is only possible within the framework of 'Maryada'. Every aspect of a civilized life has its own limit, which provides structure and ensures well-being.</p>
+        </section>
+        
+        <!-- Footer -->
+        <footer class="text-center mt-12 mb-4">
+            <p class="footer-text">મનીષ વી. શાહ</p>
+            <p class="footer-text">વોટ્સએપ: 94299 26447 (વડોદરા)</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // --- CONTENT DATA ---
+        const content = {
+            'en': {
+                'header_title': "The Concept of Limits",
+                'header_subtitle': "Just like in cricket, life has a 'crease'. Stepping out recklessly leads to getting 'out'.",
+                'analogy_title': "Life's Crease: The Limit",
+                'analogy_text': "In cricket, a batsman is out if they leave the crease. Similarly, in life, a person who crosses their limits faces negative consequences. This 'crease' is our 'Maryada' - our boundary of respectful and appropriate conduct.",
+                'elders_title': "Limit Towards Elders",
+                'elders_text': "A fundamental limit is showing respect to our elders. We should never speak to them in a loud or disrespectful voice. Crossing this limit not only brings immediate negative results but also affects our future happiness. What we do to our parents, our children may do to us.",
+                'dress_title': "The Dress Limit (Dress-Crease)",
+                'dress_text': "Our traditional attire, like the Saree, embodies dignity, grace, and modesty. It represents our culture's soul. Adopting western dress without thought can disturb our inner balance and family life. Tight clothing can also cause physical health problems by affecting blood circulation and hormones.",
+                'behavior_title': "The Behavior Limit (Vyavahar-Maryada)",
+                'behavior_text': "Maintaining dignity and purity in public interactions is crucial. Shameless public behavior blurs the line between humans and animals. We must treat peers with respect, like siblings, and elders like parents, avoiding unnecessary contact to maintain this sanctity. Crossing this limit leads to societal decay.",
+                'conclusion_title': "Progress with Limits",
+                'conclusion_text': "True progress is not in abandoning limits, but in upholding them. A healthy, peaceful, and happy life is only possible within the framework of 'Maryada'. Every aspect of a civilized life has its own limit, which provides structure and ensures well-being."
+            },
+            'gu': {
+                'header_title': "મર્યાદાની વિભાવના",
+                'header_subtitle': "ક્રિકેટની જેમ, જીવનમાં પણ એક 'ક્રિસ' હોય છે. અવિચારીપણે બહાર નીકળવાથી 'આઉટ' થઈ જવાય છે.",
+                'analogy_title': "જીવનની ક્રિસ: મર્યાદા",
+                'analogy_text': "ક્રિકેટમાં, બેટ્સમેન ક્રિસની બહાર નીકળે તો આઉટ થઈ જાય છે. તેવી જ રીતે, જીવનમાં પણ મર્યાદાની બહાર નીકળેલો માણસ 'આઉટ' થઈ જાય છે. આ 'ક્રિસ' એ જ આપણી 'મર્યાદા' છે - માન અને યોગ્ય આચરણની સીમા.",
+                'elders_title': "વડીલો પ્રત્યેની મર્યાદા",
+                'elders_text': "એક મૂળભૂત મર્યાદા વડીલોને આદર આપવાની છે. આપણે કદી પણ તેમની સામે ઊંચા અવાજે ન બોલવું જોઈએ. આ મર્યાદા ઓળંગવાથી ફક્ત તાત્કાલિક ખરાબ પરિણામો જ નથી આવતા, પણ ભવિષ્યના સુખ પર પણ અસર પડે છે. આપણે જેવું આપણા માતાપિતા સાથે કરીશું, તેવું જ આપણા સંતાનો આપણી સાથે કરી શકે છે.",
+                'dress_title': "પહેરવેશની મર્યાદા (ડ્રેસ-ક્રિસ)",
+                'dress_text': "આપણો પારંપરિક વેષ, જેમ કે સાડી, ગરિમા, લાલિત્ય અને શાલીનતાનું પ્રતિક છે. તે આપણી સંસ્કૃતિનો આત્મા છે. વિચાર્યા વગર પશ્ચિમી પહેરવેશ અપનાવવાથી આપણું આંતરિક સંતુલન અને પારિવારિક જીવન ખોરવાઈ શકે છે. ચુસ્ત કપડાં રક્ત પરિભ્રમણ અને હોર્મોન્સને અસર કરીને શારીરિક સ્વાસ્થ્ય સમસ્યાઓ પણ ઊભી કરી શકે છે.",
+                'behavior_title': "વ્યવહારની મર્યાદા (વ્યવહાર-મર્યાદા)",
+                'behavior_text': "જાહેર વ્યવહારમાં ગરિમા અને પવિત્રતા જાળવવી અત્યંત જરૂરી છે. જાહેરમાં નિર્લજ્જ વર્તન મનુષ્ય અને પશુ વચ્ચેનો ભેદ ભૂંસી નાખે છે. આપણે સાથીદારોને ભાઈ-બહેન સમાન અને વડીલોને માતા-પિતા સમાન ગણીને, આ પવિત્રતા જાળવવા બિનજરૂરી સંપર્ક ટાળવો જોઈએ. આ મર્યાદા ઓળંગવાથી સમાજનો ક્ષય થાય છે.",
+                'conclusion_title': "મર્યાદા સાથે પ્રગતિ",
+                'conclusion_text': "સાચી પ્રગતિ મર્યાદાઓ ત્યજી દેવામાં નથી, પરંતુ તેને જાળવી રાખવામાં છે. સ્વસ્થ, શાંતિપૂર્ણ અને સુખી જીવન 'મર્યાદા'ના માળખામાં જ શક્ય છે. સભ્ય જીવનના દરેક પાસાની પોતાની મર્યાદા હોય છે, જે માળખું અને સુખાકારી સુનિશ્ચિત કરે છે."
+            }
+        };
+
+        // --- LANGUAGE SWITCHER LOGIC ---
+        const btnEn = document.getElementById('btn-en');
+        const btnGu = document.getElementById('btn-gu');
+        const elementsToTranslate = document.querySelectorAll('[data-key]');
+        const body = document.body;
+
+        function setLanguage(lang) {
+            // Update text content
+            elementsToTranslate.forEach(elem => {
+                const key = elem.getAttribute('data-key');
+                if (content[lang][key]) {
+                    elem.innerHTML = content[lang][key];
+                }
+            });
+
+            // Update button styles and body font
+            if (lang === 'gu') {
+                btnGu.classList.add('active');
+                btnEn.classList.remove('active');
+                body.classList.add('gujarati-font');
+            } else {
+                btnEn.classList.add('active');
+                btnGu.classList.remove('active');
+                body.classList.remove('gujarati-font');
+            }
+        }
+
+        btnEn.addEventListener('click', () => setLanguage('en'));
+        btnGu.addEventListener('click', () => setLanguage('gu'));
+
+        // Set initial language
+        setLanguage('gu'); // Default to Gujarati as per the source document
+
+    </script>
+
+</body>
+</html>
